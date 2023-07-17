@@ -1,4 +1,4 @@
-https://youtu.be/5miHyP6lExg?t=9540
+https://youtu.be/5miHyP6lExg?t=14152
 
 # Full Stack E-Commerce + Dashboard & CMS: Next.js 13 App Router, React, Tailwind, Prisma, MySQL, 2023
 
