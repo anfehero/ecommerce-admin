@@ -37,7 +37,7 @@ const CategoryClient: React.FC<CategoryClientProps> = ({ data }) => {
       <DataTable
         columns={columns}
         data={data}
-        searchKey="label"
+        searchKey="name"
         title="Categories"
       />
 

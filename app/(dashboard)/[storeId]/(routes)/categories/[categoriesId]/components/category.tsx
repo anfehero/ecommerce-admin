@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import * as z from 'zod'
-import { Billboard } from '@prisma/client'
+import { Category } from '@prisma/client'
 import { Trash } from 'lucide-react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -26,18 +26,18 @@ import { useOrigin } from '@/hooks/use-origin'
 import ImageUpload from '@/components/ui/Image-upload'
 
 // eslint-disable-next-line no-use-before-define
-type BillboardFormValues = z.infer<typeof formSchema>
+type CategoryFormValues = z.infer<typeof formSchema>
 
-interface BillboardFormProps {
-  initialData: Billboard | null
+interface CategoryFormProps {
+  initialData: Category | null
 }
 
 const formSchema = z.object({
-  label: z.string().min(1),
+  name: z.string().min(1),
   imageUrl: z.string().min(1),
 })
 
-const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
+const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
   const params = useParams()
   const router = useRouter()
   const origin = useOrigin()
@@ -50,15 +50,15 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? 'Billboard updated' : 'Billboard created'
   const action = initialData ? 'Save Changes' : 'Create'
 
-  const form = useForm<BillboardFormValues>({
+  const form = useForm<CategoryFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
-      label: '',
+      name: '',
       imageUrl: '',
     },
   })
 
-  const onSubmit = async (data: BillboardFormValues) => {
+  const onSubmit = async (data: CategoryFormValues) => {
     try {
       setLoading(true)
 
@@ -149,7 +149,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
           <div className="grid grid-cols-3 gap-8">
             <FormField
               control={form.control}
-              name="label"
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Label</FormLabel>
@@ -174,4 +174,4 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
   )
 }
 
-export default BillboardForm
+export default CategoryForm

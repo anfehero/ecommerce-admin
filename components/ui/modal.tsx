@@ -5,8 +5,8 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle
-} from "@/components/ui/dialog"
+  DialogTitle,
+} from '@/components/ui/dialog'
 
 interface ModalProps {
   title: string
@@ -21,9 +21,9 @@ export const Modal: React.FC<ModalProps> = ({
   description,
   isOpen,
   onClose,
-  children
+  children,
 }) => {
-  const onChange = (open: Boolean) => {
+  const onChange = (open: boolean) => {
     if (!open) {
       onClose()
     }
@@ -34,13 +34,9 @@ export const Modal: React.FC<ModalProps> = ({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>
-            {description}
-          </DialogDescription>
+          <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
       </DialogContent>
     </Dialog>
   )

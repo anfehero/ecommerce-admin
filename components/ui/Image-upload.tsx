@@ -16,7 +16,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   disabled,
   onChange,
   onRemove,
-  value
+  value,
 }) => {
   const [isMounted, setIsMouted] = useState(false)
 
@@ -32,52 +32,45 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     return null
   }
 
-
-
   return (
     <div>
-      <div className='mb-4 items-center gap-4'>
+      <div className="mb-4 items-center gap-4">
         {value.map((url) => (
           <div
-            className='relative w-[200px] h-[200px] rounded-md overflow-hidden'
-            key={url}>
-            <div className='z-10 absolute top-2 right-2'>
+            className="relative w-[200px] h-[200px] rounded-md overflow-hidden"
+            key={url}
+          >
+            <div className="z-10 absolute top-2 right-2">
               <Button
                 onClick={() => onRemove(url)}
-                variant='destructive'
-                size='icon'
-                type='button'>
-                <Trash className='h-4 w-4' />
+                variant="destructive"
+                size="icon"
+                type="button"
+              >
+                <Trash className="h-4 w-4" />
               </Button>
             </div>
-            <Image
-              className='object-cover'
-              fill
-              alt='image'
-              src={url}
-            />
+            <Image className="object-cover" fill alt="image" src={url} />
           </div>
         ))}
       </div>
-      <CldUploadWidget
-        onUpload={onUpload}
-        uploadPreset='sw6ume8z'>
+      <CldUploadWidget onUpload={onUpload} uploadPreset="sw6ume8z">
         {({ open }) => {
           const onClick = () => {
             open()
           }
           return (
             <Button
-              type='button'
+              type="button"
               disabled={disabled}
-              variant='secondary'
-              onClick={onClick}>
-              <ImagePlus className='h-4 w-4 mr-2' />
+              variant="secondary"
+              onClick={onClick}
+            >
+              <ImagePlus className="h-4 w-4 mr-2" />
               Upload an Image
             </Button>
           )
         }}
-
       </CldUploadWidget>
     </div>
   )
