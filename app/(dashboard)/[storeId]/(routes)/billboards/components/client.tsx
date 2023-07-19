@@ -14,22 +14,21 @@ interface BillboardClientProps {
   data: BillboardColumn[]
 }
 
-const BillboardClient: React.FC<BillboardClientProps> = ({
-  data
-}) => {
+const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
   const router = useRouter()
   const params = useParams()
 
   return (
     <>
-      <div className='flex items-center justify-between'>
+      <div className="flex items-center justify-between">
         <Heading
           title={`Billboards (${data.length})`}
-          description='Manage billboards for your store' />
+          description="Manage billboards for your store"
+        />
         <Button
-          onClick={() => router.push(`/${params.storeId}/billboards/new`)}>
-          <Plus
-            className='mr-2 h-4 w-4' />
+          onClick={() => router.push(`/${params.storeId}/billboards/new`)}
+        >
+          <Plus className="mr-2 h-4 w-4" />
           Add New
         </Button>
       </div>
@@ -38,23 +37,14 @@ const BillboardClient: React.FC<BillboardClientProps> = ({
       <DataTable
         columns={columns}
         data={data}
-        searchKey='label'
-        title='Billboards'
+        searchKey="label"
+        title="Billboards"
       />
 
-      <Heading
-        title='Api'
-        description='API calls for billboards'
-      />
+      <Heading title="Api" description="API calls for billboards" />
       <Separator />
-      <ApiList
-        entityName='billboards'
-        entityIdName='billboardId'
-      />
-
-      
+      <ApiList entityName="billboards" entityIdName="billboardId" />
     </>
-
   )
 }
 

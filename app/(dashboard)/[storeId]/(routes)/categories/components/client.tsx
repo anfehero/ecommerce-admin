@@ -14,22 +14,21 @@ interface CategoryClientProps {
   data: CategoryColumm[]
 }
 
-const CategoryClient: React.FC<CategoryClientProps> = ({
-  data
-}) => {
+const CategoryClient: React.FC<CategoryClientProps> = ({ data }) => {
   const router = useRouter()
   const params = useParams()
 
   return (
     <>
-      <div className='flex items-center justify-between'>
+      <div className="flex items-center justify-between">
         <Heading
           title={`Categories (${data.length})`}
-          description='Manage categories for your store' />
+          description="Manage categories for your store"
+        />
         <Button
-          onClick={() => router.push(`/${params.storeId}/categories/new`)}>
-          <Plus
-            className='mr-2 h-4 w-4' />
+          onClick={() => router.push(`/${params.storeId}/categories/new`)}
+        >
+          <Plus className="mr-2 h-4 w-4" />
           Add New
         </Button>
       </div>
@@ -38,23 +37,14 @@ const CategoryClient: React.FC<CategoryClientProps> = ({
       <DataTable
         columns={columns}
         data={data}
-        searchKey='label'
-        title='Categories'
+        searchKey="label"
+        title="Categories"
       />
 
-      <Heading
-        title='Api'
-        description='API calls for Categories'
-      />
+      <Heading title="Api" description="API calls for Categories" />
       <Separator />
-      <ApiList
-        entityName='categories'
-        entityIdName='categoryId'
-      />
-
-      
+      <ApiList entityName="categories" entityIdName="categoryId" />
     </>
-
   )
 }
 

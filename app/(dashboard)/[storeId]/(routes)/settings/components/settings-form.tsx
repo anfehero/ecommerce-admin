@@ -15,7 +15,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { toast } from 'react-hot-toast'
@@ -35,9 +35,7 @@ const formSchema = z.object({
 
 type SettingsFormValues = z.infer<typeof formSchema>
 
-const SettingsForm: React.FC<SettingsFormProps> = ({
-  initialData
-}) => {
+const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const params = useParams()
   const router = useRouter()
   const origin = useOrigin()
@@ -47,7 +45,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
 
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData
+    defaultValues: initialData,
   })
 
   const onSubmit = async (data: SettingsFormValues) => {
@@ -86,57 +84,54 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
         onConfirm={onDelete}
         loading={loading}
       />
-      <div className='flex items-center justify-between'>
-        <Heading
-          title='Settings'
-          description='Manage store preferences' />
+      <div className="flex items-center justify-between">
+        <Heading title="Settings" description="Manage store preferences" />
         <Button
           disabled={loading}
-          variant='destructive'
-          size='icon'
-          onClick={() => setOpen(true)}>
-          <Trash className='h-4 w-4' />
+          variant="destructive"
+          size="icon"
+          onClick={() => setOpen(true)}
+        >
+          <Trash className="h-4 w-4" />
         </Button>
       </div>
 
       <Separator />
 
-      <Form
-        {...form}>
+      <Form {...form}>
         <form
-          className='space-y-8 w-full'
-          onSubmit={form.handleSubmit(onSubmit)}>
-          <div className='grid grid-cols-3 gap-8'>
+          className="space-y-8 w-full"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <div className="grid grid-cols-3 gap-8">
             <FormField
               control={form.control}
-              name='name'
+              name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                    Name
-                  </FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder='store name'
-                      {...field} />
+                      placeholder="store name"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
-              )} />
+              )}
+            />
           </div>
-          <Button
-            disabled={loading}
-            className='ml-auto'
-            type='submit'>
+          <Button disabled={loading} className="ml-auto" type="submit">
             Save Changes
           </Button>
         </form>
         <Separator />
         <ApiAlert
-          title='NEXT_PUBLIC_API_URL'
+          title="NEXT_PUBLIC_API_URL"
           description={`${origin}/api/${params.storeId}`}
-          variant='public' />
+          variant="public"
+        />
       </Form>
     </>
   )
