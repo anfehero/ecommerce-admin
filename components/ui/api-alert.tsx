@@ -49,7 +49,7 @@ export const ApiAlert: React.FC<ApiAlertProps> = ({
         {isClicked ?
           <Button
             variant='outline'
-            className='border-green-500 border-[3px]'
+            className='border-green-500 border-2'
             size='icon'
             onClick={onCopy}>
             {isClicked ?
@@ -58,7 +58,7 @@ export const ApiAlert: React.FC<ApiAlertProps> = ({
           </Button> :
           <Button
             variant='outline'
-            className='border-[3px]'
+            className='border-2'
             size='icon'
             onClick={onCopy}>
             {isClicked ?
